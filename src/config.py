@@ -2,10 +2,11 @@ from dotenv import load_dotenv
 import os
 
 """
-Set up environment variables in .env file in the root directory
+Create an .env file in the root directory
+and set up env variables
 """
 
 load_dotenv()
 
-ACCOUNT_USERNAME = os.getenv('ACCOUNT_USERNAME')
-ACCOUNT_PASSWORD = os.getenv('ACCOUNT_PASSWORD')
+ACCOUNT_USERNAME = os.getenv('USERNAME')
+ACCOUNT_PASSWORD = os.getenv('PASSWORD')

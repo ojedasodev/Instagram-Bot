@@ -19,15 +19,23 @@ class Bot():
 
     def get_followers(self, account_name: str):
         try:
-            user = self.cl.user_info_by_username(
-                account_name).dict()  # get user info by username
+            userid = self.cl.user_id_from_username(ACCOUNT_USERNAME)
 
             followers = self.cl.user_followers(
-                user["pk"]).keys()  # Get followers by
+                userid).keys()  # Get followers by
 
-            return followers
+            for user in followers:
+                yield self.user_info(user)
+                
         except Exception as e:
             print(e, file=open("error.log", "a"))
+
+    def user_info(self, userId: str):
+        try:
+            user = self.cl.user_info(userId)
+            return user
+        except Exception as e:
+            print(e)
 
     @staticmethod
     def to_file(item):

@@ -7,5 +7,5 @@ Set up environment variables in .env file in the root directory
 
 load_dotenv()
 
-ACCOUNT_USERNAME = os.getenv('ACCOUNT_USERNAME')
-ACCOUNT_PASSWORD = os.getenv('ACCOUNT_PASSWORD')
+ACCOUNT_USERNAME = os.getenv('USERNAME')
+ACCOUNT_PASSWORD = os.getenv('PASSWORD')

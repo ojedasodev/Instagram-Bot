@@ -1,10 +1,23 @@
+from fastapi import FastAPI, BackgroundTasks
+
 from .bot import Bot
-import multiprocessing
+
+app = FastAPI()
 
 
-def main():
-    bot = Bot()
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
 
 
-if __name__ == "__main__":
-    main()
+@app.get("/followers/{ig_account}")
+async def get_followers(ig_account: str):
+    BackgroundTasks.add_task(get_followers, ig_account, Bot())
+    return {"message": "U will get a notification when the bots ends"}
+    
+def get_followers(account: str, bot: Bot):
+    followers = [ followers for followers in bot.get_followers()]
+    print(followers)
+
+
+   
