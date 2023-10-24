@@ -1,5 +1,10 @@
 from pydantic import BaseModel
 
+from datetime import datetime
+
+# Get the current date and time
+now = datetime.now()
+
 
 """
 {'pk': 1903424587,
@@ -18,7 +23,6 @@ from pydantic import BaseModel
 
 
 class User(BaseModel):
-    pk: int
     username: str
     full_name: str
     is_private: bool
@@ -26,7 +30,9 @@ class User(BaseModel):
     media_count: int
     follower_count: int
     is_business: bool
-
+    biography: str
+    interests: list[str]
+    timestamp = now.strftime("%d/%m/%Y, %H:%M:%S")  # Date time formatting
 
 
 class Users(BaseModel):
